@@ -1,38 +1,54 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  transform: translate(60px);
+}
+.image {
+  height: 400px;
+  width: 300px;
+  /* object-fit: cover; */
+  transform: translatey(10px);
+  margin-left: 50px;
+  background-size: cover;
+
 }
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card {
+  display: flex;
+  margin-left: 10px;
+  justify-content: space-evenly;
+  margin-top: 10px;
+}
+.clr{
+  color: yellow;
+}
+.container {
+  margin-top: 20px;
+  box-shadow: 5px 5px 5px 3px purple;
+  height: 680px;
+  width: 400px;
+}
+.story {
+  font-size: 20px;
+  text-align: center;
+  font-family: "Lobster Two", cursive;
+}
+.wholeContainer {
+  display: flex;
+  height: 1500px;
+  width: 100%;
+  flex-wrap: wrap;
+  margin-left: 20px;
+  justify-content:flex-start;
+  column-gap:20px;
+}
+.title {
+  font-family: "Staatliches", cursive;
+  text-transform: uppercase;
+}
+.star {
+  font-size: 15px;
+  /* background-color: yellow; */
 }
