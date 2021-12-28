@@ -41,7 +41,16 @@ export default function App() {
       rating: "6.9/10",
       summary:
         "Michael, an aggressive young man, gives up his dream of becoming a footballer after his father's murder. However, a friend convinces him to coach a women's football team and turn his life around."
+    },
+    {
+      name:"Singam",
+      poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGoYmNj2o47l2QYedyzihk35vRVjzRMjKYAbpKR1VqShM11bF4",
+      rating: "6.9/10",
+      summary:
+      "An honest police officer gets transferred to Chennai by an influential goon. Unable to gain any evidence against the wrong doings of the goon, he decides to head back to his village, his girlfriend encourages him to stay and fight back."
+      
     }
+
   ];
   return <div className="wholeContainer">{movieList.map(Movie)}</div>;
 }
