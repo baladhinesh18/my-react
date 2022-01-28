@@ -3,6 +3,9 @@ import "./App.css";
 import Button from '@mui/material/Button';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import TextField from '@mui/material/TextField';
+import Badge from '@mui/material/Badge';
+
+
 // import Card from '@mui/material/Card';
 
 export default function App() {
@@ -90,7 +93,25 @@ export default function App() {
          >Add Movie</button>
       </div> 
       {/* {movieList.map(( name, poster, rating, summary)=> (<Movie key= {poster} name = {name} poster = {poster} rating={rating} summary={summary}></Movie>))} */}
-      {movieList.map(Movie)}
+      {/* {movieList.map(Movie)} */}
+
+      {movieList.map(({ name, rating, poster, summary }, index) => (
+
+<Movie
+
+  key={index}
+
+  name={name}
+
+  rating={rating}
+
+  poster={poster}
+
+  summary={summary}
+
+/>
+
+))}
        {/* mapping state  */}
        <AddColor/>
      
@@ -173,7 +194,14 @@ function Counter() {
   return (
     <div className="like-dislike">
       <button onClick={() => setLike(like + 1)}>👍{like}</button>
-      <button onClick={() => setDisLike(dislike - 1)}>👎{dislike}</button>
+      {/* <button onClick={() => setDisLike(dislike - 1)}>👎{dislike}</button> */}
+      {/* <Button onClick={() => setDisLike(dislike - 1)} variant="outlined" color="error">👎{dislike}
+    
+  </Button> */}
+
+<Badge badgeContent={dislike} color="success">
+👎
+</Badge>
     </div>
   );
 }
