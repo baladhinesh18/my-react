@@ -1,5 +1,6 @@
 import { useState } from "react";
 import TextareaAutosize from '@mui/material/TextareaAutosize';
+import Button from '@mui/material/Button';
 
 // function AddMovie(){
 //   const [movie,setMovie] = useState({});
@@ -24,7 +25,7 @@ export function AddColor() {
   // const colorList = ["orange" , "crimson" , "cyan"];
   const [colorList, setColorList] = useState(["orange", "crimson", "cyan"]);
   return (
-    <div>
+    <div className="color">
       {/* <input
             value={color} placeholder = "Enter a color" style = {styles}
             onChange = {(event) => setColor(event.target.value)}
@@ -36,9 +37,11 @@ export function AddColor() {
         placeholder="Enter a color"
         style={styles}
         onChange={(event) => setColor(event.target.value)} />
-      <button onClick={() => setColorList([...colorList, color])}>AddColor</button>
+        
       {colorList.map((clr) => (<ColorBox cool={clr} />))}
-
+      <br/>
+      <Button onClick={() => setColorList([...colorList, color])} variant="contained">AddColor</Button>
+      {/* <button onClick={() => setColorList([...colorList, color])}>AddColor</button> */}
     </div>
   );
 }
@@ -48,6 +51,7 @@ function ColorBox({ cool }) {
     width: "200px",
     background: cool,
     marginTop: "10px",
+    
   };
   return <div style={styles}></div>;
 }
