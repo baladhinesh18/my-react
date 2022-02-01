@@ -4,6 +4,7 @@ body {
   align-items: center;
   transform: translate(60px);
 }
+
 .image {
   height: 400px;
   width: 300px;
@@ -14,10 +15,11 @@ body {
 
 }
 .inputbox{
-  margin:1rem;
+  /* margin:1rem; */
   gap:1rem;
   display:flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .card {
@@ -32,7 +34,7 @@ body {
 .container {
   margin-top: 20px;
   box-shadow: 5px 5px 5px 3px purple;
-  height: 680px;
+  /* height: 680px; */
   width: 400px;
 }
 .story {
@@ -42,7 +44,7 @@ body {
 }
 .wholeContainer {
   display: flex;
-  height: 1500px;
+  margin-bottom:5rem;
   width: 100%;
   flex-wrap: wrap;
   margin-left: 20px;

@@ -1,10 +1,10 @@
 import { useState } from "react";
 import "./App.css";
-import Button from '@mui/material/Button';
-import TextareaAutosize from '@mui/material/TextareaAutosize';
-import TextField from '@mui/material/TextField';
-import Badge from '@mui/material/Badge';
-
+import TextField from "@mui/material/TextField";
+import { AddColor } from "./AddColor";
+import { Movie } from "./Movie";
+import { Switch, Route, Link } from "react-router-dom";
+import { Msg } from "./Msg";
 
 // import Card from '@mui/material/Card';
 
@@ -58,7 +58,7 @@ export default function App() {
         "An honest police officer gets transferred to Chennai by an influential goon. Unable to gain any evidence against the wrong doings of the goon, he decides to head back to his village, his girlfriend encourages him to stay and fight back.",
     },
   ];
-  
+
   //to add movie
   const [movieList, setMovieList] = useState(INITIAL_MOVIES);
   const [name, setName] = useState("");
@@ -66,184 +66,88 @@ export default function App() {
   const [rating, setRating] = useState("");
   const [summary, setSummary] = useState("");
   return (
-    <div className="wholeContainer">
-      
-      
-      <div className="inputbox">
-      <TextField value={name} label="Name" variant="outlined" onChange={(event)=> setName(event.target.value)} />
-      <TextField value={poster} label="poster" variant="outlined" onChange={(event)=> setPoster(event.target.value)} />
-      <TextField  value={rating} label="rating" variant="outlined" onChange={(event)=> setRating(event.target.value)} />
-      <TextField value={summary} label="summary" variant="outlined" onChange={(event)=> setSummary(event.target.value)} />
-        {/* <input value={name} placeholder="Name" onChange={(event)=> setName(event.target.value)}/>
-         <input value={poster} placeholder="poster" onChange={(event)=> setPoster(event.target.value)}/>
-         <input value={rating} placeholder="rating" onChange={(event)=> setRating(event.target.value)}/>
-         <input value={summary} placeholder="summary" onChange={(event)=> setSummary(event.target.value)}/> */}
-
-         <button
-         onClick={()=>{
-           const newMovie = {
-             name:name,
-             poster:poster,
-             rating:rating,
-             summary:summary,
-           };
-           setMovieList([...movieList,newMovie])
-
-         }}
-         >Add Movie</button>
-      </div> 
-      {/* {movieList.map(( name, poster, rating, summary)=> (<Movie key= {poster} name = {name} poster = {poster} rating={rating} summary={summary}></Movie>))} */}
-      {/* {movieList.map(Movie)} */}
-
-      {movieList.map(({ name, rating, poster, summary }, index) => (
-
-<Movie
-
-  key={index}
-
-  name={name}
-
-  rating={rating}
-
-  poster={poster}
-
-  summary={summary}
-
-/>
-
-))}
-       {/* mapping state  */}
-       <AddColor/>
+<div><ul>
+         <li><Link to="/home">Home</Link></li> 
+         <li><Link to="/addcolor">AddColor</Link></li>
+        <li><Link to="/movie">AddMovies</Link></li>
+      </ul>
+      <Switch>
+      <Route path="/home">
+          <Msg />
+        </Route>
+        <Route path="/addcolor">
+          <AddColor />
+        </Route>
+        
+        <Route path="/movie">
+        <div className="inputbox"> 
+          <TextField
+            value={name}
+            label="Name"
+            variant="outlined"
+            onChange={(event) => setName(event.target.value)}
+          />
+          <TextField
+            value={poster}
+            label="poster"
+            variant="outlined"
+            onChange={(event) => setPoster(event.target.value)}
+          />
+          <TextField
+            value={rating}
+            label="rating"
+            variant="outlined"
+            onChange={(event) => setRating(event.target.value)}
+          />
+          <TextField
+            value={summary}
+            label="summary"
+            variant="outlined"
+            onChange={(event) => setSummary(event.target.value)}
+          />
+          {/* <input value={name} placeholder="Name" onChange={(event)=> setName(event.target.value)}/>
+           <input value={poster} placeholder="poster" onChange={(event)=> setPoster(event.target.value)}/>
+           <input value={rating} placeholder="rating" onChange={(event)=> setRating(event.target.value)}/>
+           <input value={summary} placeholder="summary" onChange={(event)=> setSummary(event.target.value)}/> */}
+  
+          <button
+            onClick={() => {
+              const newMovie = {
+                name: name,
+                poster: poster,
+                rating: rating,
+                summary: summary,
+              };
+              setMovieList([...movieList, newMovie]);
+            }}
+          >
+            Add Movie
+          </button>
+        </div>
+  
+        <div className="wholeContainer">
+        
      
-      {/* <AddMovie/> */}
-     </div>
-
-      
-   );
-}
-
-
-// function AddMovie(){
-//   const [movie,setMovie] = useState({});
-//   const styles = { name, poster, rating, summary}
-//   const [movieList,setMovieList] = useState({movieList})
-//   return(
-//     <div>
-//       <TextareaAutosize
-//   aria-label={movie}
-//   placeholder="Enter movie"
-//   style = {styles}
-//     onChange = {(event) => setMovie(event.target.value)}
-// />
-//     <button onClick= {()=>setMovieList({...movieList,movie})}>AddMovie</button>
-//     {movieList.map((cini)=> (<Movie { name, poster, rating, summary} = {cini}/>)}
-//       </div>
-//   )
-// }
-
-function AddColor(){
-  const [color,setColor] = useState("pink");
-  const styles = {background:color};
-  // const colorList = ["orange" , "crimson" , "cyan"];
-  const [colorList,setColorList] = useState(["orange", "crimson" , "cyan"]);
-  return(
-    <div>
-      {/* <input 
-      value={color} placeholder = "Enter a color" style = {styles} 
-      onChange = {(event) => setColor(event.target.value)}
-      /> */}
-
-      {/* material input */}
-      <TextareaAutosize
-  aria-label={color}
-  placeholder="Enter a color"
-  style={styles}
-  onChange = {(event) => setColor(event.target.value)}
-/>
-      <button onClick= {()=>setColorList([...colorList,color])}>AddColor</button>
-      {colorList.map((clr)=> (<ColorBox cool = {clr}/>))}
-
-    </div>
-  )
-}
-function ColorBox({cool}){
-  const styles={
-    height:"20px",
-    width:"200px",
-    background: cool,
-    marginTop:"10px",
-  }
-  return<div style = {styles}></div>
-}
-
-// using separate component is conditional rendering
-// const SumToggle =({summary}) =>{
-//   const [toggle, setToggle] = useState(false);
-//   const toggler = () =>setToggle(!toggle)
-//   return(
-//     <div className="sum-btn">
-//       {/* {toggle ? <p className="story"> {summary}</p> : null } */}
-//     <button  onClick={toggler}>Summary {toggle? <p className="story">{summary}</p>  : null}</button>
-//     </div>
-//   );
-// }
-
-function Counter() {
-  const [like, setLike] = useState(0);
-  const [dislike, setDisLike] = useState(0);
-  return (
-    <div className="like-dislike">
-      <button onClick={() => setLike(like + 1)}>👍{like}</button>
-      {/* <button onClick={() => setDisLike(dislike - 1)}>👎{dislike}</button> */}
-      {/* <Button onClick={() => setDisLike(dislike - 1)} variant="outlined" color="error">👎{dislike}
-    
-  </Button> */}
-
-<Badge badgeContent={dislike} color="success">
-👎
-</Badge>
-    </div>
-  );
-}
-
-let Movie = ({ name, poster, rating, summary, }) => {
+        
+        {/* {movieList.map(Movie)} */}
   
-  
-  // conditional styling
-  const [toggle, setToggle] = useState(true);
-  // const paraStyles = {display: toggle ? "Block" : "none"};
-  const styles = { color: rating > "8.5/10" ? "teal" : "crimson" };
-  return (
-    <div className="container">
+        {movieList.map(({ name, rating, poster, summary }, index) => (
+          <Movie
+            key={index}
+            name={name}
+            rating={rating}
+            poster={poster}
+            summary={summary}
+          />
+        ))}
+        {/* <AddColor /> */}
+        {/* <AddMovie/> */}
+        </div>
+        </Route>
+      </Switch> 
+
+      
     
-      {/* <Card variant="outlined" >{container} </Card>  */}
-      <img src={poster} className="image" alt={name} />
-      <div className="card">
-        <h5 style={styles} className="star">
-          <span className="clr">
-            <i class="fas fa-star"></i>
-          </span>
-          {rating}
-        </h5>
-        <h2 className="title">{name}</h2>
-      </div>
-      <Counter/>
-      {/* <p className="story">{summary}</p> */}
-
-      {/* {/* conditional styling */}
-      {/* <button onClick = {() => setToggle(!toggle)}>summary</button>
-      <p style = {paraStyles} className="story">{summary}</p>  */}
-
-      {/* conditional rendering */}
-      {toggle ? <p className="story">{summary}</p>: " "}
-      {/* <SumToggle summary={summary}/> */}
-
-      {/* material button */}
-      <Button onClick = {() => setToggle(!toggle)} variant="contained">toggleSummary</Button>
-      
-      
-      
-       
     </div>
   );
 }
