@@ -1,10 +1,3 @@
-body {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  transform: translate(60px);
-}
-
 .image {
   height: 400px;
   width: 300px;
@@ -12,19 +5,21 @@ body {
   transform: translatey(10px);
   margin-left: 50px;
   background-size: cover;
-
 }
-.inputbox{
-  /* margin:1rem; */
-  gap:1rem;
-  display:flex;
+.welcome {
+  text-align: center;
+}
+
+.inputbox {
+  gap: 1rem;
+  display: flex;
   flex-direction: column;
   align-items: center;
 }
-.color{
-  display:flex;
-  /* align-items:center; */
-  margin-left: 35rem;
+.color {
+  display: flex;
+  align-items: center;
+
   flex-direction: column;
 }
 
@@ -34,13 +29,13 @@ body {
   justify-content: space-evenly;
   margin-top: 10px;
 }
-.clr{
+.clr {
   color: yellow;
 }
 .container {
   margin-top: 20px;
   box-shadow: 5px 5px 5px 3px purple;
-  /* height: 680px; */
+  height: min-content;
   width: 400px;
 }
 .story {
@@ -50,12 +45,12 @@ body {
 }
 .wholeContainer {
   display: flex;
-  margin-bottom:5rem;
+  margin-bottom: 5rem;
   width: 100%;
   flex-wrap: wrap;
   margin-left: 20px;
-  justify-content:flex-start;
-  column-gap:20px;
+  justify-content: flex-start;
+  column-gap: 20px;
 }
 .title {
   font-family: "Staatliches", cursive;
@@ -63,17 +58,26 @@ body {
 }
 .star {
   font-size: 15px;
-  /* background-color: yellow; */
 }
-.like-dislike{
+.like-dislike {
   display: flex;
   gap: 10px;
-  /* height:15px;
-  width:10px; */
   align-items: center;
   margin-left: 40%;
 }
-.sum-btn{
+.sum-btn {
   margin-left: 30%;
   margin-top: 30px;
+}
+.del-count {
+  display: flex;
+  justify-content: space-evenly;
+}
+.not-found {
+  font-size: 50px;
+  margin: 0;
+  text-align: center;
+}
+.error {
+  margin-left: 30%;
 }

@@ -1,13 +1,13 @@
 import { useState } from "react";
 import "./App.css";
-import TextField from "@mui/material/TextField";
-import { AddColor } from "./AddColor";
-import { Movie } from "./Movie";
-import { Switch, Route, Link } from "react-router-dom";
-import { Msg } from "./Msg";
-import Button from "@mui/material/Button";
 
-// import Card from '@mui/material/Card';
+import { AddColor } from "./AddColor";
+import { AddMovie } from "./AddMovie";
+
+import { Switch, Route, Link, Redirect } from "react-router-dom";
+import { Msg } from "./Msg";
+import { MovieList } from "./MovieList";
+import { NotFound } from "./NotFound";
 
 export default function App() {
   const INITIAL_MOVIES = [
@@ -62,105 +62,41 @@ export default function App() {
 
   //to add movie
   const [movieList, setMovieList] = useState(INITIAL_MOVIES);
-  const [name, setName] = useState("");
-  const [poster, setPoster] = useState("");
-  const [rating, setRating] = useState("");
-  const [summary, setSummary] = useState("");
+
   return (
     <div>
       <ul>
         <li>
-          <Link to="/home">Home</Link>
+          <Link to="/">Home</Link>
         </li>
         <li>
           <Link to="/addcolor">AddColor</Link>
         </li>
         <li>
-          <Link to="/movie">AddMovies</Link>
+          <Link to="/movie/add">Add Movies</Link>
+        </li>
+        <li>
+          <Link to="/movie">Movie List</Link>
         </li>
       </ul>
       <Switch>
-        <Route path="/home">
+        <Route exact path="/">
           <Msg />
+        </Route>
+        <Route path="/films">
+          <Redirect to="/movie" />
         </Route>
         <Route path="/addcolor">
           <AddColor />
         </Route>
-
+        <Route path="/movie/add">
+          <AddMovie movieList={movieList} setMovieList={setMovieList} />
+        </Route>
         <Route path="/movie">
-          <div className="inputbox">
-            <TextField
-              value={name}
-              label="Name"
-              variant="outlined"
-              onChange={(event) => setName(event.target.value)}
-            />
-            <TextField
-              value={poster}
-              label="poster"
-              variant="outlined"
-              onChange={(event) => setPoster(event.target.value)}
-            />
-            <TextField
-              value={rating}
-              label="rating"
-              variant="outlined"
-              onChange={(event) => setRating(event.target.value)}
-            />
-            <TextField
-              value={summary}
-              label="summary"
-              variant="outlined"
-              onChange={(event) => setSummary(event.target.value)}
-            />
-            {/* <input value={name} placeholder="Name" onChange={(event)=> setName(event.target.value)}/>
-           <input value={poster} placeholder="poster" onChange={(event)=> setPoster(event.target.value)}/>
-           <input value={rating} placeholder="rating" onChange={(event)=> setRating(event.target.value)}/>
-           <input value={summary} placeholder="summary" onChange={(event)=> setSummary(event.target.value)}/> */}
-            <Button
-              onClick={() => {
-                const newMovie = {
-                  name: name,
-                  poster: poster,
-                  rating: rating,
-                  summary: summary,
-                };
-                setMovieList([...movieList, newMovie]);
-              }}
-              variant="contained"
-            >
-              AddMovie
-            </Button>
-            {/* <button
-            onClick={() => {
-              const newMovie = {
-                name: name,
-                poster: poster,
-                rating: rating,
-                summary: summary,
-              };
-              setMovieList([...movieList, newMovie]);
-            }}
-          >
-            Add Movie
-          </button> */}
-          </div>
-
-          <div className="wholeContainer">
-            {/* {movieList.map(Movie)} */}
-
-            {movieList.map(({ name, rating, poster, summary }, index) => (
-              <Movie
-                key={index}
-                name={name}
-                rating={rating}
-                poster={poster}
-                summary={summary}
-              />
-            ))}
-            {/* <AddColor /> */}
-            {/* <AddMovie/> */}
-          </div>
+          <MovieList movieList={movieList} setMovieList={setMovieList} />
+        </Route>
+        <Route path="**">
+          <NotFound />
         </Route>
       </Switch>
     </div>
