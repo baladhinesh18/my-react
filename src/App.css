@@ -80,4 +80,9 @@
 }
 .error {
   margin-left: 30%;
+  height:500px;
+}
+.movie-detail-container{
+  max-width: 900px;
+  padding:24px;
 }

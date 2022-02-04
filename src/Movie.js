@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 // import Button from '@mui/material/Button';
 import { Counter } from "./Counter";
 import IconButton from "@mui/material/IconButton";
@@ -7,12 +8,15 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
+import InfoIcon from "@mui/icons-material/Info";
 
-export const Movie = ({ name, poster, rating, summary, deleteButton }) => {
+export const Movie = ({ name, poster, rating, summary, deleteButton, id }) => {
   // conditional styling
   const [toggle, setToggle] = useState(true);
   // const paraStyles = {display: toggle ? "Block" : "none"};
   const styles = { color: rating > "8.5/10" ? "teal" : "crimson" };
+  const history = useHistory();
+  console.log(history);
   return (
     <Card className="container">
       {/* <div className="container"> */}
@@ -37,6 +41,12 @@ export const Movie = ({ name, poster, rating, summary, deleteButton }) => {
 
         <IconButton onClick={() => setToggle(!toggle)} color="primary">
           {toggle ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+        </IconButton>
+        <IconButton
+          onClick={() => history.push(`/movies/${id}`)}
+          color="primary"
+        >
+          <InfoIcon />
         </IconButton>
 
         {/* conditional rendering */}
