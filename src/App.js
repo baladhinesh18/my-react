@@ -9,7 +9,8 @@ import { Msg } from "./Msg";
 import { MovieList } from "./MovieList";
 import { NotFound } from "./NotFound";
 // import { Movie } from "./Movie";
-import MovieDetails  from "./MovieDetails";
+import MovieDetails from "./MovieDetails";
+import { EditMovie } from "./EditMovie";
 
 export default function App() {
   const INITIAL_MOVIES = [
@@ -20,9 +21,9 @@ export default function App() {
       rating: "9.4/10",
       summary:
         "When a tribal man is arrested for a case of alleged theft, his wife turns to a human-rights lawyer to help bring justice.",
-   trailer:"https://www.youtube.com/embed/Gc6dEDnL8JA"
-      },
-    
+      trailer: "https://www.youtube.com/embed/Gc6dEDnL8JA",
+    },
+
     {
       name: "Doctor",
       poster:
@@ -30,9 +31,9 @@ export default function App() {
       rating: "7.7/10",
       summary:
         "A military doctor embarks on a journey to track down his former fiancee's kidnapped niece. His mission then leads him to the heart of a human trafficking ring in Goa.",
-    trailer:"https://www.youtube.com/embed/oQiH_Iw0kDs"
-      },
-    
+      trailer: "https://www.youtube.com/embed/oQiH_Iw0kDs",
+    },
+
     {
       name: "Maanaadu",
       poster:
@@ -40,8 +41,8 @@ export default function App() {
       rating: "9.1/10",
       summary:
         "On the day of a public conference by the state's Chief Minister, his bodyguard and a police officer become stuck in a time loop.",
-   trailer:"https://www.youtube.com/embed/t9retstFUlM"
-      },
+      trailer: "https://www.youtube.com/embed/t9retstFUlM",
+    },
     {
       name: "Frozen",
       poster:
@@ -49,16 +50,16 @@ export default function App() {
       rating: "7.4/10",
       summary:
         "Frozen is a 2013 American computer-animated musical fantasy film produced by Walt Disney Animation Studios and released by Walt Disney Pictures. The 53rd Disney animated feature film, it is inspired by Hans Christian Andersen's fairy tale ,The Snow Queen.",
-    trailer:"https://www.youtube.com/embed/TbQm5doF_Uc"
-      },
+      trailer: "https://www.youtube.com/embed/TbQm5doF_Uc",
+    },
     {
       name: "Bigil",
       poster: "https://upload.wikimedia.org/wikipedia/en/f/f0/Bigil_poster.jpg",
       rating: "6.9/10",
       summary:
         "Michael, an aggressive young man, gives up his dream of becoming a footballer after his father's murder. However, a friend convinces him to coach a women's football team and turn his life around.",
-  trailer:"https://www.youtube.com/embed/GR-Ui8-V2M0"
-      },
+      trailer: "https://www.youtube.com/embed/GR-Ui8-V2M0",
+    },
     {
       name: "Singam",
       poster:
@@ -66,8 +67,8 @@ export default function App() {
       rating: "6.9/10",
       summary:
         "An honest police officer gets transferred to Chennai by an influential goon. Unable to gain any evidence against the wrong doings of the goon, he decides to head back to his village, his girlfriend encourages him to stay and fight back.",
- trailer:"https://www.youtube.com/embed/96CgGu1JYbY"
-      },
+      trailer: "https://www.youtube.com/embed/96CgGu1JYbY",
+    },
   ];
 
   //to add movie
@@ -97,7 +98,7 @@ export default function App() {
           <Redirect to="/movies" />
         </Route>
         {/* Route with parameter */}
-        
+
         <Route path="/addcolor">
           <AddColor />
         </Route>
@@ -106,6 +107,9 @@ export default function App() {
         </Route>
         <Route exact path="/movies">
           <MovieList movieList={movieList} setMovieList={setMovieList} />
+        </Route>
+        <Route path="/movie/edit/:id">
+          <EditMovie movieList={movieList} setMovieList={setMovieList} />
         </Route>
         <Route path="/movies/:id">
           <MovieDetails movieList={movieList} />
@@ -117,5 +121,3 @@ export default function App() {
     </div>
   );
 }
-
-

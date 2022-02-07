@@ -9,8 +9,17 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import InfoIcon from "@mui/icons-material/Info";
+import Button from "@mui/material/Button";
 
-export const Movie = ({ name, poster, rating, summary, deleteButton, id }) => {
+export const Movie = ({
+  name,
+  poster,
+  rating,
+  summary,
+  deleteButton,
+  editButton,
+  id,
+}) => {
   // conditional styling
   const [toggle, setToggle] = useState(true);
   // const paraStyles = {display: toggle ? "Block" : "none"};
@@ -58,10 +67,11 @@ export const Movie = ({ name, poster, rating, summary, deleteButton, id }) => {
       </CardContent>
       <CardActions className="del-count">
         {/* <div className="del-count"> */}
-        <div className="counter">
-          <Counter />{" "}
-        </div>
-        <div className="del">{deleteButton}</div>
+
+        <Counter />
+
+        {deleteButton}
+        {editButton}
         {/* </div> */}
       </CardActions>
       {/* </div> */}

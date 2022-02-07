@@ -2,14 +2,18 @@ import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-export function AddMovie({ movieList, setMovieList }) {
-  const [name, setName] = useState("");
-  const [poster, setPoster] = useState("");
-  const [rating, setRating] = useState("");
-  const [summary, setSummary] = useState("");
-  const [trailer, setTrailer] = useState("");
+export function EditMovie({ movieList, setMovieList }) {
+  const { id } = useParams();
+  const movie = movieList[id];
+  console.log(movie);
 
+  const [name, setName] = useState(movie.name);
+  const [poster, setPoster] = useState(movie.poster);
+  const [rating, setRating] = useState(movie.rating);
+  const [summary, setSummary] = useState(movie.summary);
+  const [trailer, setTrailer] = useState(movie.trailer);
   const history = useHistory();
   return (
     <div className="inputbox">
@@ -43,39 +47,26 @@ export function AddMovie({ movieList, setMovieList }) {
         variant="outlined"
         onChange={(event) => setTrailer(event.target.value)}
       />
-      {/* <input value={name} placeholder="Name" onChange={(event)=> setName(event.target.value)}/>
-           <input value={poster} placeholder="poster" onChange={(event)=> setPoster(event.target.value)}/>
-           <input value={rating} placeholder="rating" onChange={(event)=> setRating(event.target.value)}/>
-           <input value={summary} placeholder="summary" onChange={(event)=> setSummary(event.target.value)}/> */}
+
       <Button
         onClick={() => {
-          const newMovie = {
+          const updatedMovie = {
             name: name,
             poster: poster,
             rating: rating,
             summary: summary,
             trailer: trailer,
           };
-          setMovieList([...movieList, newMovie]);
+          const copyMovieList = [...movieList];
+          copyMovieList[id] = updatedMovie;
+          setMovieList(copyMovieList);
           history.push("/movies");
         }}
         variant="contained"
+        color="success"
       >
-        AddMovie
+        Save
       </Button>
-      {/* <button
-            onClick={() => {
-              const newMovie = {
-                name: name,
-                poster: poster,
-                rating: rating,
-                summary: summary,
-              };
-              setMovieList([...movieList, newMovie]);
-            }}
-          >
-            Add Movie
-          </button> */}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import IconButton from '@mui/material/IconButton';
-import Badge from '@mui/material/Badge';
+import IconButton from "@mui/material/IconButton";
+import Badge from "@mui/material/Badge";
 
 // using separate component is conditional rendering
 // const SumToggle =({summary}) =>{
@@ -23,13 +23,21 @@ export function Counter() {
       {/* <Button onClick={() => setDisLike(dislike + 1)} variant="outlined" color="error">👎{dislike}
           
         </Button> */}
-      <IconButton onClick={() => setLike(like + 1)} aria-label="delete" color="primary">
+      <IconButton
+        onClick={() => setLike(like + 1)}
+        aria-label="delete"
+        color="primary"
+      >
         <Badge badgeContent={like} color="primary">
           👍
         </Badge>
       </IconButton>
 
-      <IconButton onClick={() => setDisLike(dislike + 1)} aria-label="delete" color="error">
+      <IconButton
+        onClick={() => setDisLike(dislike + 1)}
+        aria-label="delete"
+        color="error"
+      >
         <Badge badgeContent={dislike} color="error">
           👎
         </Badge>

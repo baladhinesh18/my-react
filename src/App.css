@@ -63,7 +63,6 @@
   display: flex;
   gap: 10px;
   align-items: center;
-  margin-left: 40%;
 }
 .sum-btn {
   margin-left: 30%;
@@ -80,9 +79,9 @@
 }
 .error {
   margin-left: 30%;
-  height:500px;
+  height: 500px;
 }
-.movie-detail-container{
+.movie-detail-container {
   max-width: 900px;
-  padding:24px;
+  padding: 24px;
 }
