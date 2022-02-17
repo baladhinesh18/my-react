@@ -106,9 +106,9 @@ export default function App() {
             <MenuIcon />
          
           <Button onClick={()=>history.push("/")} color="inherit">Home</Button>
-          <Button onClick={()=>history.push("/movies")} color="inherit">Movies</Button>
+          <Button onClick={()=>history.push("/movies")} color="inherit">MovieList</Button>
+          <Button onClick={()=>history.push("/addcolor")} color="inherit">AddColor</Button>
           <Button onClick={()=>history.push("/addmovie")} color="inherit">AddMovie</Button>
-          <Button onClick={()=>history.push("/addcolor")} color="inherit">games</Button>
           <Button  
           onClick={()=> history.push("/form")}
           color="inherit">
@@ -117,7 +117,7 @@ export default function App() {
           <Button sx={{marginLeft:"auto"}}  
           startIcon={theme.palette.mode === 'light' ? <Brightness4Icon />:<Brightness7Icon />  }
           onClick={()=>setMode(mode==="dark" ? "light" : "dark")} color="inherit">
-         Dark/Light mode
+          {mode === "dark"? "light":"dark"} mode
           </Button>
           
     

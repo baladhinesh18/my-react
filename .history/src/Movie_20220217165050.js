@@ -37,9 +37,14 @@ export const Movie = ({
       <img src={poster} className="image" alt={name} />
       <CardContent>
         <div className="card">
+         
           <h4 className="title">Movie:{name}</h4>
+         
         </div>
-        <h5 style={styles}>ratings:{rating}/10</h5>
+        <h5 style={styles} >
+          
+          ratings:{rating}/10
+        </h5>
         {/* <p className="story">{summary}</p> */}
 
         {/* {/* conditional styling */}
@@ -57,29 +62,24 @@ export const Movie = ({
         </IconButton>
 
         {/* conditional rendering */}
-        {toggle ? (
-          <p className="story">
-            <a href={summary} target="_blank" alt="{name}">
-              To see the details of the movie
-            </a>
-          </p>
-        ) : (
-          " "
-        )}
+        {toggle ? <p className="story"><a href={summary}>To see the detaiils of the movie</a></p> : " "}
         {/* <SumToggle summary={summary}/> */}
         <div className="flex">
-          <Counter />
-          {deleteButton}
-          {editButton}
-        </div>
+<Counter />
+{deleteButton}
+{editButton}
+</div>
         {/* material button */}
         {/* <Button onClick={() => setToggle(!toggle)} variant="contained">toggleSummary</Button> */}
       </CardContent>
       <CardActions className="del-count">
         {/* <div className="del-count"> */}
 
+       
         {/* </div> */}
       </CardActions>
+     
+
     </Card>
   );
 };

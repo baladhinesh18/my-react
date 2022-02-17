@@ -24,7 +24,7 @@ import { useEffect, useState } from "react";
     <div>
       <iframe
         width="100%"
-        height="600"
+        height="750"
         src={movies.trailer}
         title="YouTube video player"
         frameborder="0"

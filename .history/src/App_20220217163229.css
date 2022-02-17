@@ -1,10 +1,10 @@
 .image {
-  height: 250px;
-  width: 150px;
+  height: 200px;
+  width: 200px;
   /* object-fit: cover; */
-  /* transform: translatey(10px); */
+  transform: translatey(10px);
   margin-left: 50px;
-  /* background-size: cover; */
+  background-size: cover;
 }
 .welcome {
   text-align: center;
@@ -27,22 +27,18 @@
 
 .card {
   display: flex;
- 
+  /* margin-left: 10px; */
   justify-content: space-between;
-  
+  /* margin-top: 10px; */
 }
 .clr {
   color: yellow;
-}
-.flex{
-  display: flex;
 }
 .container {
   margin-top: 20px;
   box-shadow: 5px 5px 5px 3px purple;
   height: min-content;
-  width: 1000px;
-  display: flex;
+  width: 400px;
 }
 .story {
   font-size: 20px;

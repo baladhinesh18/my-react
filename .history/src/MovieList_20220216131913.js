@@ -9,14 +9,14 @@ export function MovieList() {
   const history = useHistory();
   const [movieList, setMovieList] = useState([]);
   const getMovie = () => {
-    fetch("https://620657c292dd6600171c09cb.mockapi.io/movies")
+    fetch("https://6206596292dd6600171c09e1.mockapi.io/movies")
       .then((data) => data.json())
       .then((mvs) => setMovieList(mvs));
   }
 
   //Delete -> Refresh the list
   const deleteMovie = (id) => {
-    fetch("https://620657c292dd6600171c09cb.mockapi.io/movies/" + id, {
+    fetch("https://6206596292dd6600171c09e1.mockapi.io/movies/" + id, {
       method: "DELETE",
     }).then(() => getMovie());
   };

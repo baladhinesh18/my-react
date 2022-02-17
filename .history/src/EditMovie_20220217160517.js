@@ -1,24 +1,39 @@
-// import { useState } from "react";
+// import { useEffect, useState } from "react";
 // import TextField from "@mui/material/TextField";
 // import Button from "@mui/material/Button";
 // import { useHistory } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 
+// // export function EditMovie({ movieList, setMovieList }) {
+// export function EditMovie() {
+//   const { id } = useParams();
+//   const [movie, setMovie] = useState(null);
+//   useEffect(() => {
+//     fetch("https://6206596292dd6600171c09e1.mockapi.io/movies/" + id)
+//       .then((data) => data.json())
+//       .then((mv) => setMovie(mv));
+//   }, []);
+//   console.log(id, movie);
+//   return movie ? <EditMovieForm movie={movie} /> : "";
+// }
 
-// export function AddMovie({ movieList, setMovieList }) {
-//   const [name, setName] = useState("");
-//   const [poster, setPoster] = useState("");
-//   const [rating, setRating] = useState("");
-//   const [summary, setSummary] = useState("");
-//   const [trailer, setTrailer] = useState("");
-
+// function EditMovieForm({ movie }) {
+//   const [name, setName] = useState(movie.name);
+//   const [poster, setPoster] = useState(movie.poster);
+//   const [rating, setRating] = useState(movie.rating);
+//   const [summary, setSummary] = useState(movie.summary);
+//   const [trailer, setTrailer] = useState(movie.trailer);
+//   const setMovieName = (event) => setName(event.target.value);
 //   const history = useHistory();
+
 //   return (
 //     <div className="inputbox">
 //       <TextField
 //         value={name}
 //         label="Name"
 //         variant="outlined"
-//         onChange={(event) => setName(event.target.value)}
+//         onChange={setMovieName}
+//         // onChange={(event) => setName(event.target.value)}
 //       />
 //       <TextField
 //         value={poster}
@@ -44,52 +59,39 @@
 //         variant="outlined"
 //         onChange={(event) => setTrailer(event.target.value)}
 //       />
-//       {/* <input value={name} placeholder="Name" onChange={(event)=> setName(event.target.value)}/>
-//            <input value={poster} placeholder="poster" onChange={(event)=> setPoster(event.target.value)}/>
-//            <input value={rating} placeholder="rating" onChange={(event)=> setRating(event.target.value)}/>
-//            <input value={summary} placeholder="summary" onChange={(event)=> setSummary(event.target.value)}/> */}
+
 //       <Button
 //         onClick={() => {
-//           const newMovie = {
+//           const updatedMovie = {
 //             name: name,
 //             poster: poster,
 //             rating: rating,
 //             summary: summary,
 //             trailer: trailer,
 //           };
-          
+//           fetch(
+//             "https://6206596292dd6600171c09e1.mockapi.io/movies/" + movie.id,
+//             {
+//               method: "PUT",
+//               body: JSON.stringify(updatedMovie),
+//               headers: {
+//                 "Content-Type": "application/json",
+//               },
+//             }
+//           ).then(() => history.push("/movies"));
+//           // setMovieList([...movieList, newMovie]);
+//           // history.push("/movies");
 
-//         //    1.method-Post
-//         //  2.body- data & JSON. stringify(JSON data)
-//         //   3.headers- JSON data
-
-//         fetch ("https://6206596292dd6600171c09e1.mockapi.io/movies", {
-//           method:"POST",
-//           body: JSON.stringify(newMovie),
-//           headers: {
-//             "Content-Type": "application/json",
-//           },
-//         }).then(()=> history.push("/movies"));
-//         // setMovieList([...movieList, newMovie]);
+//           // const copyMovieList = [...movieList];
+//           // copyMovieList[id] = updatedMovie;
+//           // setMovieList(copyMovieList);
 //           // history.push("/movies");
 //         }}
 //         variant="contained"
+//         color="success"
 //       >
-//         AddMovie
+//         Save
 //       </Button>
-//       {/* <button
-//             onClick={() => {
-//               const newMovie = {
-//                 name: name,
-//                 poster: poster,
-//                 rating: rating,
-//                 summary: summary,
-//               };
-//               setMovieList([...movieList, newMovie]);
-//             }}
-//           >
-//             Add Movie
-//           </button> */}
 //     </div>
 //   );
 // }
@@ -97,11 +99,11 @@
 
 
 
-// input box validation
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
 
@@ -118,42 +120,55 @@ const movieValidationSchema=yup.object({
     .required("A cool description is in need😊"),
   trailer: yup.string().required("A trailer is in need😊"),
 });
-  
 
 
-export function AddMovie() {
-  
+export function EditMovie() {
   const history = useHistory();
+  const { id } = useParams();
+  const [movie, setMovie] = useState(null);
+  useEffect(() => {
+    fetch("https://620657c292dd6600171c09cb.mockapi.io/movies/" + id)
+      .then((data) => data.json())
+      .then((mv) => setMovie(mv));
+  }, []);
+  console.log(id, movie);
+  // return movie ? <EditMovieForm movie={movie} /> : "";
 
-  const addMovie = (newMovie) => {
-    
-     fetch("https://620657c292dd6600171c09cb.mockapi.io/movies", {
-              method: "POST",
-              body: JSON.stringify(newMovie),
-              headers: {
-                "Content-Type": "application/json",
-              },
-            }).then(() => history.push("/movies"));
-  };
+
+// function EditMovieForm({ movie }) {
+  const editMovie = (updatedMovie) =>{
+    fetch(
+      "https://620657c292dd6600171c09cb.mockapi.io/movies/" + id,
+      {
+        method: "PUT",
+        body: JSON.stringify(updatedMovie),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    ).then(() => history.push("/movies"));
+    }
+  
   const { handleSubmit, handleChange, handleBlur,values, errors, touched } =
     useFormik({
       initialValues: {
-        movie: "",
-        poster: "",
-        rating: "",
-        summary: "",
-        trailer: "",
+        movie: values,
+        poster: values,
+        rating: values,
+        summary: values,
+        trailer: values,
       },
       
       validationSchema: movieValidationSchema,
       onSubmit: 
-      (newMovie) => {
-      console.log("onSubmit", newMovie);
-      addMovie(newMovie)
+      (updatedMovie) => {
+      console.log("onSubmit", updatedMovie);
+      editMovie(updatedMovie)
       },
     });
+
   return (
-    <form onSubmit={handleSubmit}className="inputbox">
+    <div onSubmit={handleSubmit} className="inputbox">
       <TextField
         value={values.name}
         id="name"
@@ -209,40 +224,13 @@ export function AddMovie() {
           error={errors.trailer && touched.trailer}
           helperText={errors.trailer && touched.trailer && errors.trailer}
       />
-      
       <Button
-        type="submit"
-        
-        // onClick={() => {
-        //   const newMovie = {
-        //     name: name,
-        //     poster: poster,
-        //     rating: rating,
-        //     summary: summary,
-        //     trailer: trailer,
-        //   };
-          
-
-        //    1.method-Post
-        //  2.body- data & JSON. stringify(JSON data)
-        //   3.headers- JSON data
-
-      //   fetch ("https://6206596292dd6600171c09e1.mockapi.io/movies", {
-      //     method:"POST",
-      //     body: JSON.stringify(newMovie),
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //   }).then(()=> history.push("/movies"));
-      //   // setMovieList([...movieList, newMovie]);
-      //     history.push("/movies");
-      //    }
-      // }
+       
         variant="contained"
+        color="success"
       >
-        AddMovie
+        Save
       </Button>
-      
-    </form>
+    </div>
   );
 }

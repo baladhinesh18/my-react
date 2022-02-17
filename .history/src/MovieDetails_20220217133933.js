@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
   // console.log(movies);
   const [movies, setMovies] = useState ({});
   const getMovie = () => {
-    fetch("https://620657c292dd6600171c09cb.mockapi.io/movies/" + id)
+    fetch("https://6206596292dd6600171c09e1.mockapi.io/movies/" + id)
     .then((data)=> data.json())
     .then((mv)=> setMovies(mv));
   };
@@ -24,7 +24,7 @@ import { useEffect, useState } from "react";
     <div>
       <iframe
         width="100%"
-        height="600"
+        height="750"
         src={movies.trailer}
         title="YouTube video player"
         frameborder="0"

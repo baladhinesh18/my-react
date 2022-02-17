@@ -1,8 +1,8 @@
 .image {
-  height: 250px;
-  width: 150px;
+  height: 200px;
+  width: 200px;
   /* object-fit: cover; */
-  /* transform: translatey(10px); */
+  transform: translatey(10px);
   margin-left: 50px;
   /* background-size: cover; */
 }

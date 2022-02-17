@@ -1,10 +1,10 @@
 .image {
-  height: 250px;
-  width: 150px;
+  height: 200px;
+  width: 200px;
   /* object-fit: cover; */
-  /* transform: translatey(10px); */
+  transform: translatey(10px);
   margin-left: 50px;
-  /* background-size: cover; */
+  background-size: cover;
 }
 .welcome {
   text-align: center;
@@ -41,7 +41,7 @@
   margin-top: 20px;
   box-shadow: 5px 5px 5px 3px purple;
   height: min-content;
-  width: 1000px;
+  width: 800px;
   display: flex;
 }
 .story {

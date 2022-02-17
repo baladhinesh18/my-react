@@ -117,7 +117,7 @@ export default function App() {
           <Button sx={{marginLeft:"auto"}}  
           startIcon={theme.palette.mode === 'light' ? <Brightness4Icon />:<Brightness7Icon />  }
           onClick={()=>setMode(mode==="dark" ? "light" : "dark")} color="inherit">
-         Dark/Light mode
+          {mode === "dark"? "light":"dark"} mode
           </Button>
           
     

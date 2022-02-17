@@ -1,17 +1,15 @@
 .image {
-  height: 250px;
-  width: 150px;
+  height: 400px;
+  width: 300px;
   /* object-fit: cover; */
-  /* transform: translatey(10px); */
+  transform: translatey(10px);
   margin-left: 50px;
-  /* background-size: cover; */
+  background-size: cover;
 }
 .welcome {
   text-align: center;
 }
-.title{
-  margin: 0;
-}
+
 .inputbox {
   gap: 1rem;
   display: flex;
@@ -27,26 +25,23 @@
 
 .card {
   display: flex;
- 
-  justify-content: space-between;
-  
+  /* margin-left: 10px; */
+  justify-content: space-evenly;
+  /* margin-top: 10px; */
 }
 .clr {
   color: yellow;
-}
-.flex{
-  display: flex;
 }
 .container {
   margin-top: 20px;
   box-shadow: 5px 5px 5px 3px purple;
   height: min-content;
-  width: 1000px;
-  display: flex;
+  width: 400px;
 }
 .story {
   font-size: 20px;
   text-align: center;
+  font-family: "Lobster Two", cursive;
 }
 .wholeContainer {
   display: flex;
@@ -57,7 +52,10 @@
   justify-content: flex-start;
   column-gap: 20px;
 }
-
+.title {
+  font-family: "Staatliches", cursive;
+  text-transform: uppercase;
+}
 .star {
   font-size: 15px;
 }
